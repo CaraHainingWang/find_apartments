@@ -18,11 +18,11 @@ class DistanceCalculator:
     direction_api_calls = 0
     geocode_api_calls = 0
     def __init__(self):
+        self.data_path = data_path
         with open(self.data_path) as dataFile:
             self.stations = json.load(dataFile)['locations']
         self.stations_geocode = [self.get_geocode_from_station(station) for station in self.stations]
         self.loc = loc
-        self.data_path = data_path
         self.map_cache_data_path = map_cache_data_path
         self.station_cache_data_path = station_cache_data_path
         self.geocode_cache_data_path = geocode_cache_data_path
